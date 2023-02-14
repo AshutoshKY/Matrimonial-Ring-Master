@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Krub:300,400" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/Capture.PNG">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style type="text/css">
+    	body,html{
+    		background:url("/images/bckImage7.avif");
+    		background-repeat:no-repeat;
+    		background-size:100% 100vh;
+    	}
+        
+    	#box1{
+			float: left;
+            margin-top:10vh;
+            height:89.9vmin;
+            width:50%;
+			border-top: 20px rgb(57, 57, 57) solid;
+            border-left: 20px rgb(57, 57, 57) solid;
+			border-bottom: 20px  rgb(57, 57, 57) solid;
+			border-right: 20px rgb(57, 57, 57) solid;
+			border-radius: 20px;
+			border-right-style:dotted;
+
+    	}
+    	#box1 > img{
+			position: relative;
+			top: 15%;
+			left: 38%;
+			width:24vmin;
+            height:24vmin;
+            border-radius:20%;
+            border:0.3vmin solid white/*#66ff99*/;
+    	}
+    	.description{
+    		/*border:1px solid cyan;*/
+    		left:28%;
+    		top:45%;
+    		right:1%;
+    		bottom:0%;
+    		font-size:2.3vmin;
+    		color:white;
+    		padding:4%;
+    	}
+    	#name{
+			position: relative;
+    		margin-top:20%;
+			text-align: center;
+    		font-family: monospace;
+    		font-weight:700;
+    		font-size:4vmin;
+    		letter-spacing:0.3vmin;
+    		color:cyan;
+    		text-shadow:1vmin 1vmin black;
+    	}
+    	#about{
+			text-align: center;
+			position: relative;
+    		margin-top:0%;
+    	}
+    	#likeBtn{
+    		left:90%;
+    		width:20%;
+    		top:10%;
+    	}
+		#right{
+			padding: 8% 0 10% 8%;
+			float: right;
+			width: 50%;
+			margin-top:10vh;
+            height:89.9vmin;
+            border-left: 0px  rgb(57, 57, 57) solid;
+			border-top: 20px rgb(57, 57, 57) solid;
+			border-bottom: 20px  rgb(57, 57, 57) solid;
+			border-right: 20px  rgb(57, 57, 57) solid;
+			border-radius: 20px;
+		}
+    	#box2{
+           
+            width:80%;
+            height:55%;
+            background-color: linear-gradient(#a0e0e1,#dae1c6);
+            opacity:0.8;
+            border-radius: 20px;
+			color: #66ff99;
+    	}
+    	#box3{
+            width:80%;
+            height:55%;
+            background-color: linear-gradient(#a0e0e1,#dae1c6);
+            opacity:0.8;
+            border-radius: 20px;
+			color: #66ff99;
+    	}
+    	table,th,td{
+            width:50%;
+            height:50%;
+            background-color: linear-gradient(#a0e0e1,#dae1c6);
+            opacity:0.8;
+            border-radius: 20px;
+    	}
+		td{
+			margin-bottom: 5%;
+		}
+    	.left{
+    		color:cyan;
+    		font-size:2.3vmin;
+    		letter-spacing: 0.5vmin;
+            text-shadow: 0.3vmin 0.3vmin rgb(64, 64, 64);
+    	}
+    	.right{
+    		font-family:monospace;
+    		font-size:2.5vmin;
+    	}
+    	.fa{
+            font-size: 2vmin;
+        }
+        .fa-thumbs-up
+        {
+            font-size: 2.6vmin;
+        }
+        .fa-trash
+        {
+            font-size: 3vmin;
+            color: red;
+        }
+        .fa-trash:hover
+        {
+            background-color: red;
+            color: white;
+        }
+        #btnSubmitlike{
+			position: relative;
+        	left:360%;
+        	margin-top:-10%;
+        }
+        #btnSubmitlike:hover{
+            background-color:white ;
+            color:#3B5998;
+        }
+        #btnSubmitdel{
+            position:absolute;
+            left:35.7%;
+            top:42%;
+            border: none;
+        }
+        #btnSubmitdel:hover{
+            background-color:red ;
+            color:white;
+        }
+        #disableBtnSubmitlike{
+        	
+            position:absolute;
+        	left:0%;
+        	top:0%;
+        	border: none;
+        	display: none;
+			background-color: black;
+			color: #090909;
+        }
+        
+		#header{
+			position:fixed;
+			top:0%;
+			width:100vw;
+			height:10vmin;
+			background-color: #090909;
+			}
+	 #header img{
+		 float: left;
+		 width: 6vw;
+		 height: 7.5vh;
+		 background: #555;
+		 cursor: pointer;
+		 margin-left: 5vw;
+		 margin-top:0.6%;
+	 /*border-radius: 15px;*/
+	 } 
+	 #searchIcon,#logoutIcon{
+		 position:absolute;
+		 color:#66ff99;/*#ff6600;
+		 /*background-color:white;*/
+		 font-size:3vmin;
+		 left:90%;
+		 top:30%;
+	 }
+	 #logoutIcon{
+		left:95%;
+		top:25.5%;
+		text-decoration:none;
+		border: none;
+		font-size:3.5vmin;
+		font-family:monospace;
+		background-color: #191919;
+		border-radius: 200px;
+		justify-content:center;
+		height: 50%;
+		width: 2.5%;
+		color: #ff6666;
+	}
+	#searchIcon{
+		position:absolute;
+		left:90%;
+		top:25%;
+		width:3%;
+		height:50%;
+		padding-top: 0.4%;
+		background-color: #191919;
+		border-radius:100px;
+		cursor:pointer;
+		text-align: center;
+		color: lavenderblush;
+	}
+	#searchInput{
+		position: absolute;
+		border: none;
+		font-size:2.2vmin;
+		font-weight: 500;
+		background-color:rgb(63, 63, 63); 
+		right:7.8%;
+		top:25%;
+		width:18%;
+		height:51%;
+		color:rgb(208, 235, 188);
+		padding-left:2%;
+		border-radius:50px;
+		text-decoration: none;
+	}
+    </style>
+</head>
+<body>
+    <div id="header">
+		<!-- <img src="./ring_master.jpg" alt="logos" onclick="location.href='/dashboard' " title="home page" > -->
+		<h2 style="margin-left:12%; margin-top:1.6%; color:#DC5F00" onclick="location.href='/dashboard' ">Ring Master</h2>
+		 <form id="searchForm" action="/dashboard/userProfile" method="GET">
+			<input id="searchInput" type="text" name="partner" placeholder="Search a Person's Name">
+		 </form>
+		 <label for="searchInput"><p id="searchIcon"><span class="glyphicon glyphicon-search custom-color"></span></p></label>
+		 <button id="logoutIcon" onclick="location.href='http://127.0.0.1:8081/logout'" type="button"><span class="glyphicon glyphicon-log-out logoutbtn" style="font-size:3vmin"></span></button>
+	</div>
+	<div id="box1">
+		    <% if (user.image) { %>
+		    <img  src="/userImages/<%= user.pname %>.jpg">
+		    <% } else { %>
+		    <img  src="/images/images_5.jpg" alt="Upload image">
+		    <% } %>
+			<div id="likeBtn">
+                <form action="/dashboard/like" method="POST">
+                    <button name="like" id="btnSubmitlike" type="submit" value="<%= user.pname %>" title="Interested"><span><i class="fa fa-thumbs-up"></i></span></button>
+                </form>
+                 <% for(var i=0; i< likedUsers.length ; i++) { %>
+                          <% if (likedUsers[i] !='"') { %> 
+                              <% if (likedUsers[i] == user.pname ) { %>
+                                  <button style="display:flex;" id="disableBtnSubmitlike" title="Liked"><span><i class="fa fa-thumbs-up"></i></span></button>
+                              <% } %>
+                           <% } %>
+                    <% } %>
+            </div>
+		    <div class="description">
+		    	<p id="name">
+		    	<%= user.pname %>
+			    </p>
+			    <p id="about">
+			    	<%= user.description %> 
+			    </p>
+		    </div>
+		    <% if( calledUser.pname!=user.pname) { %>
+            
+            <% } else { %>
+            <div id="likeBtn">
+                <form action="/dashboard/userProfile/delete" method="POST">
+                    <button name="del" id="btnSubmitdel" type="submit" value="<%= user.pname %>" title="Delete my Profile"><span><i class="fa fa-trash"></i></span></button>
+                </form>
+            </div>
+            <% } %>
+	</div>
+	<div id="right">
+		<table id="box2">
+			<tr>
+				<td class="left"> First Name </td>
+				<td class="right"> <%= user.fname %></td>
+			</tr>
+			<tr>
+				<td class="left"> Last Name </td>
+				<td class="right"><%= user.lname %></td>
+			</tr>
+			<tr>
+				<td class="left"> Gender </td>
+				<td class="right"> <%= user.gender %></td>
+			</tr>
+			<tr>
+				<td class="left"> Date Of Birth </td>
+				<td class="right"><%= (user.DOB).toDateString() %></td>
+			</tr>
+			<tr>
+				<td class="left"> Religion </td>
+				<td class="right"><%= user.religion %></td>
+			</tr>
+			<tr>
+				<td class="left"> Mother Tongue </td>
+				<td class="right"><%= user.motherTongue%></td>
+			</tr>
+			<tr>
+				<td class="left"> Email </td>
+				<td class="right"><%= user.email%></td>
+			</tr>
+		</table>
+		<table id="box3">
+			<tr>
+				<td class="left"> Height </td>
+				<td class="right"><%= user.userHeight %>cm</td>
+			</tr>
+			<tr>
+				<td class="left"> Marital Status </td>
+				<td class="right"><%= user.mStatus%></td>
+			</tr>
+			<tr>
+				<td class="left"> Qualificaiton </td>
+				<td class="right"><%= user.qualification %></td>
+			</tr>
+			<tr>
+				<td class="left"> College </td>
+				<td class="right"><%= user.college%></td>
+			</tr>
+			<tr>
+				<td class="left"> country </td>
+				<td class="right"><%= user.country %></td>
+			</tr>
+			<tr>
+				<td class="left"> Occupation </td>
+				<td class="right"><%= user.occupation %></td>
+			</tr>
+			<tr>
+				<td class="left"> Salary </td>
+				<td class="right"><%= user.salary %> INR</td>
+			</tr>
+		</table>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+           $("#disableBtnSubmitlike").hover(function(){
+                  $("#disableBtnSubmitlike").css("cursor","not-allowed");
+           },function(){
+                  $("#disableBtnSubmitlike").css("cursor","not-allowed");
+           }
+           );
+           $("#homeIcon").hide();
+           $("#home").hover(function(){
+                $("#homeTxt").hide();
+                $("#homeIcon").show();
+           },
+              function(){
+              $("#homeTxt").show();
+                $("#homeIcon").hide();
+           });
+
+		   $("#searchInput").hide();
+           $("#searchIcon").click(function(){
+                $("#searchInput").toggle(600);
+           });
+	});
+</script>
+</html>
